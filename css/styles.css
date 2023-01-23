@@ -533,13 +533,14 @@ progress {
 .feature {
   height: 60vh;
   overflow: hidden;
-  /* background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0)), url(/assets/img/hv.png); */
-  /* background-image: rgba(0, 0, 0, 0.5), url(/assets/img/hv.png); */
+  /* background-image: linear-gradient(to left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 50%), url(/assets/img/hv.png); */
   background-image: url(/assets/img/hv.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #000000;
+  /* color: #000000; */
+  color: #ffffff;
+  /* text-shadow: rgb(0 0 0) 1px 1px 4px; */
 }
 
 .tag-1 {
@@ -557,13 +558,16 @@ progress {
 .tag-3 {
   width: 40%;
   margin-left: 60%;
-  background-color: #FFD812;
+  /* background-color: #FFD812; */
   padding: 1.5rem;
 }
-/* .tag-3 h1 {
+.tag-3 h1 {
   display: inline;
   background-color: black;
-} */
+  /* background-color: #FFD812; */
+  /* color: #000000; */
+  padding: 1rem;
+}
 /* .tag-3 p {
   display: inline;
   background-color: black;
@@ -11433,13 +11437,14 @@ html {
 }
 
 #mainNav {
-  /* padding-top: 1rem;
-  padding-bottom: 1rem; */
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 600;
-  /* background: rgb(0, 0, 0); */
-  /* position: absolute; */
 }
+/* @media (min-width: 992px) {
+  #mainNav {
+    position: absolute;
+  }
+}  */
 #mainNav .navbar-brand {
   color: #ffffff;
 }
