@@ -4174,10 +4174,9 @@ textarea.form-control-lg {
 #mainNav .navbar-toggler:not(.collapsed) .fa-bars {
   display: none;
 }
-
 #mainNav .collapsed .fa-xmark {
   display: none;
-}
+} 
 
 .fa-bars {
   /* display: inline-block; */
@@ -11390,7 +11389,7 @@ html {
 }
 
 .divider-custom {
-  margin: 1.25rem 0 1.5rem;
+  margin: 1rem;
   width: 100%;
   display: flex;
   justify-content: center;
