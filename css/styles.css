@@ -240,7 +240,8 @@ a {
   text-decoration: underline;
 }
 a:hover {
-  color: #806c0a;
+  /* color: #806c0a; */
+  color: rgba(0, 0, 0, 0.6)
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -3328,7 +3329,7 @@ textarea.form-control-lg {
   background-color: #FFD812;
 } */
 .btn-dark:hover {
-  background-color: #806c0a;
+  background-color: rgba(0, 0, 0, 0.6);
   color: #ffffff;
 }
 .btn-check:focus + .btn-dark, .btn-dark:focus {
