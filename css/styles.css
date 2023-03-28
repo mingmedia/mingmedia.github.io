@@ -492,7 +492,7 @@ progress {
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
-  margin-bottom: 0;
+  margin: 1rem 0;
 }
 
 .display-1 {
@@ -545,6 +545,12 @@ progress {
   /* color: #000000; */
   color: #ffffff;
   /* text-shadow: rgb(0 0 0) 1px 1px 4px; */
+}
+
+#homerun-jobs-widget {
+  padding: 20px;
+  background: #ffffff;
+  clip-path: polygon(92% 0,100% 8%,100% 100%,8% 100%,0 92%,0 0);
 }
 
 .tag-1 {
@@ -3326,7 +3332,7 @@ textarea.form-control-lg {
 }
 
 .btn-dark {
-  color: #ffffff;
+  color: rgb(var(--bs-primary-rgb));
   background-color: #000000;
   /* border-color: #000000; */
 }
@@ -3336,7 +3342,7 @@ textarea.form-control-lg {
 } */
 .btn-dark:hover {
   background-color: rgba(0, 0, 0, 0.6);
-  color: #ffffff;
+  color: rgb(var(--bs-primary-rgb));
 }
 .btn-check:focus + .btn-dark, .btn-dark:focus {
   color: #ffffff;
@@ -11379,6 +11385,10 @@ html {
   scroll-padding-top: calc(4.5rem - 1px);
 }
 
+#careers {
+  background-color: #d8d8d8;
+}
+
 .page-section {
   padding: 6rem 0;
 }
@@ -11553,7 +11563,7 @@ html {
 .footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
-  background-color: #d8d8d8;
+  /* background-color: #d8d8d8; */
   /* background-color: #000000;
   color: #ffffff; */
 }
