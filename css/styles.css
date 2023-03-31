@@ -110,20 +110,20 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.375rem + 1.5vw);
+  font-size: calc(2rem + 2.25vw);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.5rem;
+    font-size: 3.75rem;
   }
 }
 
 h2, .h2 {
-  font-size: calc(1.325rem + 0.9vw);
+  font-size: calc(2rem + 1.35vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 }
 
@@ -538,13 +538,53 @@ progress {
   height: 60vh;
   overflow: hidden;
   /* background-image: linear-gradient(to left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 50%), url(/assets/img/hv.png); */
-  background-image: url(/assets/img/hv.png);
+  background-image: url(/assets/img/thumbnails/2830250344.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   /* color: #000000; */
   color: #ffffff;
   /* text-shadow: rgb(0 0 0) 1px 1px 4px; */
+}
+
+.thumbnail {
+  height: 90vh;
+  overflow: hidden;
+  /* background-image: linear-gradient(to left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 50%), url(/assets/img/hv.png); */
+  /* background-image: url(/assets/img/hv.png); */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* color: #000000; */
+  color: #ffffff;
+  /* text-shadow: rgb(0 0 0) 1px 1px 4px; */
+}
+
+.play {
+  display: grid;
+  width: 300px;
+  margin-block: 99px;
+  margin-inline: auto;
+  padding-block: 33px;
+  place-items: center;
+  background-color: rgb(0, 176, 111);
+  border-color: rgb(0, 176, 111);
+  color: rgb(255, 255, 255);
+  border-radius: 16px;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 5px;
+}
+
+.play:hover {
+  filter: brightness(90%);
+}
+
+.play svg {
+  height: 65px;
+  width: 65px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.2) 5px 5px 5px);
+  color: white;
 }
 
 #homerun-jobs-widget {
@@ -558,6 +598,10 @@ progress {
   height: 60vh;
   /* margin-left: 50%;
   width: 40%; */
+}
+
+.thumbnail .tag-1 {
+  height: 90vh;
 }
 
 .tag-2 {
@@ -577,12 +621,13 @@ progress {
   /* background-color: #FFD812; */
   padding: 1.5rem;
 }
-.tag-3 h1 {
-  display: inline;
-  background-color: black;
-  /* background-color: #FFD812; */
-  /* color: #000000; */
-  padding: 1rem;
+
+h1 {
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.9);
+}
+
+.thumbnail h2 {
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.9);
 }
 /* .tag-3 p {
   display: inline;
