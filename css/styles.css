@@ -11573,6 +11573,29 @@ html {
 .portfolio a {
   text-decoration: none;
 }
+.portfolio .stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0 1rem 1rem;
+  background: white;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+.portfolio .title + .stats {
+  margin-top: -0.75rem;
+}
+.portfolio .stats .live::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  background: #2ecc71;
+  vertical-align: middle;
+}
 
 .portfolio .portfolio-item .portfolio-item-caption {
   position: absolute;
