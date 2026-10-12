@@ -4,7 +4,7 @@
   --line: #252834;
   --text: #f4f5f8;
   --muted: #9097a6;
-  --accent: #ffd23f;
+  --accent: #fed913;
   --live: #2ee66b;
 }
 
@@ -59,7 +59,7 @@ h2 { font-size: clamp(3rem, 8vw, 5.5rem); margin-bottom: 48px; }
 #about p { color: #c9cdd6; font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.6; max-width: 46ch; margin: 0; }
 
 /* Footer */
-footer { background: linear-gradient(180deg, var(--accent) 0%, #f0b400 100%); color: #111; text-align: center; padding: 72px 0 40px; }
+footer { background: linear-gradient(180deg, var(--accent) 0%, #e8c100 100%); color: #111; text-align: center; padding: 72px 0 40px; }
 .socials { display: flex; justify-content: center; gap: 16px; }
 .socials a { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: #111; color: var(--accent); transition: transform .2s; }
 .socials a:hover { transform: translateY(-3px); }
