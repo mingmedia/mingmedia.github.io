@@ -1,12 +1,11 @@
-// Builds the site into _site/, filling the games grid in index.html with
-// live data (name, icon, visits, players) from the Roblox APIs.
+// Builds the site into _site/, filling index.html with live data
+// (name, icon, visits, players) from the Roblox APIs.
 // Usage: node scripts/build.mjs
 
 import { readFileSync, writeFileSync, rmSync, mkdirSync, cpSync } from 'node:fs';
 
 const OUT = '_site';
-const STATIC = ['404.html', 'CNAME', 'css', 'js', 'assets'];
-const PLACEHOLDER = '<!-- GAMES -->';
+const STATIC = ['404.html', 'CNAME', 'css', 'assets'];
 
 async function getJson(url) {
     for (let attempt = 1; ; attempt++) {
@@ -45,33 +44,50 @@ const [games, icons] = await Promise.all([
     getJson(`https://thumbnails.roblox.com/v1/games/icons?universeIds=${ids}&size=512x512&format=Png`),
 ]);
 
-const cards = placeIds.map((placeId, i) => {
+const list = placeIds.map((placeId, i) => {
     const game = games.data.find(g => g.id === universeIds[i]);
     const icon = icons.data.find(t => t.targetId === universeIds[i]);
     if (!game) throw new Error(`No game data for place ${placeId}`);
-    const name = escapeHtml(cleanName(game.name));
-    const img = icon?.state === 'Completed' ? icon.imageUrl : '/assets/favicon.png';
-    return `
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto">
-                            <a target="_blank" href="https://www.roblox.com/games/${placeId}">
-                                <img class="img-fluid" src="${img}" alt="${name}" width="512" height="512" loading="lazy">
-                                <h3 class="title">${name}</h3>
-                                <p class="stats">
-                                    <span>${compact(game.visits)} visits</span>
-                                    <span class="${game.playing > 0 ? 'live' : ''}">${game.playing.toLocaleString('en')} playing</span>
-                                </p>
-                            </a>
-                        </div>
-                    </div>`;
-}).join('');
+    return {
+        placeId,
+        name: escapeHtml(cleanName(game.name)),
+        img: icon?.state === 'Completed' ? icon.imageUrl : '/assets/favicon.png',
+        visits: game.visits,
+        playing: game.playing,
+    };
+}).sort((a, b) => b.visits - a.visits);
 
-const index = readFileSync('index.html', 'utf8');
-if (!index.includes(PLACEHOLDER)) throw new Error(`index.html is missing ${PLACEHOLDER}`);
+const cards = list.map(g => `
+                <a class="card" href="https://www.roblox.com/games/${g.placeId}" target="_blank">
+                    <img src="${g.img}" alt="${g.name}" width="512" height="512" loading="lazy">
+                    <h3>${g.name}</h3>
+                    <div class="meta">
+                        <span>${compact(g.visits)} visits</span>${g.playing > 0 ? `
+                        <span class="on">● ${g.playing.toLocaleString('en')}</span>` : ''}
+                    </div>
+                </a>`).join('').trimStart();
+
+// The hero collage scrolls through three identical sets so the loop is seamless
+const set = `<div class="set">${list.map(g => `<img src="${g.img}" alt="">`).join('')}</div>`;
+const collage = [set, set, set].join('\n                ');
+
+const replacements = {
+    '<!-- GAMES -->': cards,
+    '<!-- COLLAGE -->': collage,
+    '{{TOTAL_VISITS}}': compact(list.reduce((sum, g) => sum + g.visits, 0)) + '+',
+    '{{TOTAL_PLAYING}}': list.reduce((sum, g) => sum + g.playing, 0).toLocaleString('en'),
+    '{{GAME_COUNT}}': String(list.length),
+};
+
+let index = readFileSync('index.html', 'utf8');
+for (const [token, html] of Object.entries(replacements)) {
+    if (!index.includes(token)) throw new Error(`index.html is missing ${token}`);
+    index = index.replaceAll(token, html);
+}
 
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT);
 for (const path of STATIC) cpSync(path, `${OUT}/${path}`, { recursive: true });
-writeFileSync(`${OUT}/index.html`, index.replace(PLACEHOLDER, cards.trimStart()));
+writeFileSync(`${OUT}/index.html`, index);
 
 console.log(`Built ${placeIds.length} games into ${OUT}/`);
