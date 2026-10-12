@@ -62,7 +62,7 @@ const cards = list.map(g => `
                     <img src="${g.img}" alt="${g.name}" width="512" height="512" loading="lazy">
                     <h3>${g.name}</h3>
                     <div class="meta">
-                        <span>${compact(g.visits)} visits</span>${g.playing > 0 ? `
+                        <span>${compact(g.visits)} plays</span>${g.playing > 0 ? `
                         <span class="on">● ${g.playing.toLocaleString('en')}</span>` : ''}
                     </div>
                 </a>`).join('').trimStart();
